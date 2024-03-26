@@ -4,14 +4,14 @@ import { FunctionalApp } from "./Components/Functional/FunctionalApp";
 
 function App() {
   return (
-    <div className="App">
+    <div className='App'>
       <h1>Name That Fish</h1>
-      <div className="split">
-        <div className="left">
+      <div className='split'>
+        <div className='left'>
           <h3>Functional</h3>
           <FunctionalApp />
         </div>
-        <div className="right">
+        <div className='right'>
           <h3>Class</h3>
           <ClassApp />
         </div>
