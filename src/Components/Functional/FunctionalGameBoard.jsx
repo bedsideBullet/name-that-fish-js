@@ -1,25 +1,6 @@
 import "./styles/game-board.css";
-import { Images } from "../../assets/Images";
+import { initialFishes } from "../data/fishes";
 import { useState } from "react";
-
-export const initialFishes = [
-  {
-    name: "trout",
-    url: Images.trout,
-  },
-  {
-    name: "salmon",
-    url: Images.salmon,
-  },
-  {
-    name: "tuna",
-    url: Images.tuna,
-  },
-  {
-    name: "shark",
-    url: Images.shark,
-  },
-];
 
 export function FunctionalGameBoard({
   setCorrectCount,

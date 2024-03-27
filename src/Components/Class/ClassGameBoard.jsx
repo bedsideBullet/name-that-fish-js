@@ -1,41 +1,26 @@
 import { Component } from "react";
-import { Images } from "../../assets/Images";
-
-const initialFishes = [
-  {
-    name: "trout",
-    url: Images.trout,
-  },
-  {
-    name: "salmon",
-    url: Images.salmon,
-  },
-  {
-    name: "tuna",
-    url: Images.tuna,
-  },
-  {
-    name: "shark",
-    url: Images.shark,
-  },
-];
+import { initialFishes } from "../data/fishes";
 
 export class ClassGameBoard extends Component {
   state = {
     fishGuess: "",
   };
 
-  handleSubmit = (e) => {
-    e.preventDefault();
-    const { fishGuess } = this.state;
-    const { currentFishIndex } = this.props;
+  handleAnswer = (answer) => {
+    const { correctCount, incorrectCount } = this.props;
+    const currentFishIndex = correctCount + incorrectCount;
     const nextFishToName = initialFishes[currentFishIndex];
 
-    if (fishGuess === nextFishToName.name) {
+    if (answer === nextFishToName.name) {
       this.props.onCorrectGuess();
     } else {
       this.props.onIncorrectGuess();
     }
+  };
+
+  handleSubmit = (e) => {
+    e.preventDefault();
+    this.handleAnswer(this.state.fishGuess);
 
     this.setState({
       fishGuess: "",
@@ -43,7 +28,8 @@ export class ClassGameBoard extends Component {
   };
 
   render() {
-    const { currentFishIndex } = this.props;
+    const { correctCount, incorrectCount } = this.props;
+    const currentFishIndex = correctCount + incorrectCount;
     const nextFishToName = initialFishes[currentFishIndex];
     return (
       <div id="game-board">
